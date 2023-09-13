@@ -7,7 +7,7 @@ import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 
-function Form() {
+function Form({ handleModal }) {
   const [gereja, setGereja] = useState("PILIH GEREJA");
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ function Form() {
 
   const addGuest = (guest) => {
     if (!guest.name || /^\s*$/.test(guest.name) || gereja === "PILIH GEREJA") {
-      alert("Input Gereja dan Nama");
+      handleModal("Input Gereja dan Nama");
       return;
     }
 
@@ -56,11 +56,9 @@ function Form() {
   //Create Guest
   const addListToDB = async (e) => {
     setLoading(true);
-    e.preventDefault(e);
 
     if (guests.length < 1) {
-      alert("Input Gereja dan Nama");
-
+      handleModal("Input Gereja dan Nama");
       setLoading(false);
       return;
     }
@@ -71,6 +69,7 @@ function Form() {
     setGuests([]);
     await timeout(2000);
     setLoading(false);
+    handleModal("Success");
     return;
   };
 
@@ -165,12 +164,9 @@ function Form() {
           </div>
         </div>
       </div>
-      <form
-        onSubmit={addListToDB}
-        className="bg-light-cream flex justify-center"
-      >
+      <div onClick={addListToDB} className="bg-light-cream flex justify-center">
         <ButtonSubmit text="SUBMIT" loading={loading} />
-      </form>
+      </div>
     </>
   );
 }
