@@ -28,10 +28,10 @@ function Title() {
           animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
           transition={{ duration: 1, delay: 0.05 }}
         >
-          <h2 className="mt-5 text-xl md:text-2xl lg:text-4xl text-white tracking-wider font-hubballi font-bold">
+          <h2 className="mt-5 text-xl md:text-2xl lg:text-4xl text-white tracking-wider font-hubballi font-[559]">
             PERSEKUTUAN GABUNGAN
           </h2>
-          <h2 className="mt-1 text-xl md:text-2xl lg:text-4xl text-white tracking-wider font-hubballi font-bold">
+          <h2 className="mt-1 text-xl md:text-2xl lg:text-4xl text-white tracking-wider font-hubballi font-[559]">
             KOMISI PEMUDA
           </h2>
           <h2 className="mt-1 text-lg md:text-xl lg:text-2xl text-white tracking-wider font-hubballi font-medium">
@@ -46,7 +46,7 @@ function Title() {
         >
           <button
             onClick={() => goto()}
-            className="mt-12 font-hubballi text-white bg-none border rounded-md text-lg px-6 py-3 md:text-xl cursor-pointer
+            className="mt-12 font-hubballi text-white bg-none border-2 rounded-md text-lg px-6 py-3 md:text-xl cursor-pointer
         hover:bg-white hover:text-black transition-all duration-300"
           >
             REGISTRASI

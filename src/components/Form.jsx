@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Form.css";
-import Button from "./Button";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import ButtonSubmit from "./ButtonSubmit";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 function Form() {
   const [gereja, setGereja] = useState("PILIH GEREJA");
@@ -91,32 +90,6 @@ function Form() {
       <div className="bg-gradient-to-b from-dark-gray to-light-cream min-h-screen flex flex-col justify-center items-center">
         <h1 className="font-hubballi text-4xl">REGISTRASI</h1>
         <div className="flex justify-center items-center">
-          {/* <div className="relative inline-block text-left dropdown">
-            <Button text={gereja.toUpperCase()} />
-            <div className="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
-              <div
-                className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                aria-labelledby="headlessui-menu-button-1"
-                id="headlessui-menu-items-117"
-                role="menu"
-              >
-                <div className="py-1">
-                  {listGereja.map((gereja, index) => {
-                    return (
-                      <p
-                        onClick={() => setGereja(gereja)}
-                        key={index}
-                        className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200 hover:cursor-pointer"
-                        role="menuitem"
-                      >
-                        {gereja}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div> */}
           <motion.nav
             initial={false}
             animate={isOpen ? "open" : "closed"}
