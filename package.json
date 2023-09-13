@@ -2,7 +2,7 @@
   "name": "guest-book",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://altim10.github.io/simuda-guest-book",
+  "homepage": "http://alxtim10.github.io/simuda-guest-book",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
