@@ -60,6 +60,8 @@ function Form() {
 
     if (guests.length < 1) {
       alert("Input Gereja dan Nama");
+
+      setLoading(false);
       return;
     }
 
