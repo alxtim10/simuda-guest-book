@@ -34,7 +34,7 @@ function Form({ handleModal }) {
 
   const addGuest = (guest) => {
     if (!guest.name || /^\s*$/.test(guest.name) || gereja === "PILIH GEREJA") {
-      handleModal("Input Gereja dan Nama");
+      handleModal("Wrong Input", false);
       return;
     }
 
@@ -58,7 +58,7 @@ function Form({ handleModal }) {
     setLoading(true);
 
     if (guests.length < 1) {
-      handleModal("Input Gereja dan Nama");
+      handleModal("Wrong Input", false);
       setLoading(false);
       return;
     }
@@ -69,7 +69,7 @@ function Form({ handleModal }) {
     setGuests([]);
     await timeout(2000);
     setLoading(false);
-    handleModal("Success");
+    handleModal("Success", true);
     return;
   };
 
@@ -152,7 +152,7 @@ function Form({ handleModal }) {
         </div>
         <div className="flex flex-col justify-start w-full text-center mx-2 rounded-xl pb-2 h-full">
           <h1 className="text-white font-hubballi text-3xl mx-1">
-            List Pemuda {gereja === "PILIH GEREJA" ? "" : gereja}
+            LIST PEMUDA {gereja === "PILIH GEREJA" ? "" : gereja.toUpperCase()}
           </h1>
           <TodoForm onSubmit={addGuest} gereja={gereja} />
           <div className="flex justify-center items-center">
