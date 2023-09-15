@@ -91,7 +91,7 @@ function Form({ handleModal }) {
   };
 
   const goDashboard = () => {
-    navigate("/dashboard");
+    navigate("/guestbook");
   };
 
   return (
