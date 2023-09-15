@@ -40,7 +40,7 @@ function Dashboard() {
   };
 
   return (
-    <div className=" bg-gradient-to-b from-light-cream to-white">
+    <div className=" bg-gradient-to-b from-light-cream to-white min-h-screen">
       {isLoading && (<div className="flex justify-center items-center mt-16"><p>Loading...</p></div>)}
       {!isLoading && (
         <>
