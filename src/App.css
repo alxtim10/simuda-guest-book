@@ -1,4 +1,7 @@
-
+:root {
+  color-scheme: only light;
+}
+  
   .todo-app {
     display: flex;
     flex-direction: column;

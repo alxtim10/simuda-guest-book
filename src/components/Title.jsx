@@ -18,7 +18,7 @@ function Title() {
           className="box"
           initial={{ opacity: 0, x: 10, y: -70 }}
           animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.05 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <img src={title} alt="" className="p-2 mt-5 h-20 md:h-32 lg:h-40 " />
         </motion.div>
@@ -26,7 +26,7 @@ function Title() {
           className="box"
           initial={{ opacity: 0, x: 10, y: 70 }}
           animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.05 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <h2 className="mt-5 text-xl md:text-2xl lg:text-4xl text-white tracking-wider font-hubballi font-[559]">
             PERSEKUTUAN GABUNGAN
@@ -42,7 +42,7 @@ function Title() {
           className="box"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.15 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <button
             onClick={() => goto()}
