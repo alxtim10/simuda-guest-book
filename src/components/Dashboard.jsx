@@ -9,9 +9,10 @@ function Dashboard() {
   const [guests, setGuests] = useState([]);
   const headerItems = ["GEREJA", "NAMA"];
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const q = query(collection(db, "guests"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let guestsArr = [];
@@ -21,7 +22,7 @@ function Dashboard() {
       guestsArr.sort((a, b) => (a.gereja > b.gereja ? 1 : -1));
       setGuests(guestsArr);
     });
-    setIsLoading(!isLoading);
+    setIsLoading(false);
     return () => unsubscribe();
   }, []);
 
