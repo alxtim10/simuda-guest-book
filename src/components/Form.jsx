@@ -6,11 +6,14 @@ import ButtonSubmit from "./ButtonSubmit";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Form({ handleModal }) {
   const [gereja, setGereja] = useState("PILIH GEREJA");
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const listGereja = [
     "GKI Grand Wisata",
@@ -86,6 +89,11 @@ function Form({ handleModal }) {
     setGereja(gereja);
     setIsOpen(!isOpen);
   };
+
+  const goDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <>
       <div className="bg-gradient-to-b from-dark-gray to-light-cream min-h-screen flex flex-col justify-center items-center">
@@ -164,8 +172,15 @@ function Form({ handleModal }) {
           </div>
         </div>
       </div>
-      <div onClick={addListToDB} className="bg-light-cream flex justify-center">
-        <ButtonSubmit text="SUBMIT" loading={loading} />
+      <div className="bg-light-cream flex justify-center">
+        <ButtonSubmit
+          text="SUBMIT"
+          loading={loading}
+          addListToDB={addListToDB}
+        />
+      </div>
+      <div className="bg-light-cream flex justify-center font-hubballi text-md">
+        <p onClick={goDashboard} className="mt-3 hover:underline cursor-pointer">GUEST BOOK</p>
       </div>
     </>
   );
