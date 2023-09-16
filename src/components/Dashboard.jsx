@@ -10,6 +10,8 @@ function Dashboard() {
   const headerItems = ["GEREJA", "NAMA"];
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [filteredList, setFilteredList] = useState(guests);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +23,7 @@ function Dashboard() {
       });
       guestsArr.sort((a, b) => (a.gereja > b.gereja ? 1 : -1));
       setGuests(guestsArr);
+      setFilteredList(guestsArr);
     });
     setIsLoading(false);
     return () => unsubscribe();
@@ -40,9 +43,25 @@ function Dashboard() {
     navigate("/");
   };
 
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...guests];
+    updatedList = updatedList.filter((item) => {
+      return item.name.toLowerCase().includes(query);
+    });
+    setFilteredList(updatedList);
+  };
+
+
+
+
   return (
     <div className=" bg-gradient-to-b from-light-cream to-white min-h-screen">
-      {isLoading && (<div className="flex justify-center items-center"><p className=" mt-16">Loading...</p></div>)}
+      {isLoading && (
+        <div className="flex justify-center items-center">
+          <p className=" mt-16">Loading...</p>
+        </div>
+      )}
       {!isLoading && (
         <>
           <div className="gap-2 flex justify-center items-center">
@@ -62,10 +81,20 @@ function Dashboard() {
             </button>
           </div>
           <div className="mt-5 flex justify-center items-center">
-            <p className="text-2xl font-hubballi font-bold tracking-wider">GUEST BOOK</p>
+            <p className="text-2xl font-hubballi font-bold tracking-wider">
+              GUEST BOOK
+            </p>
+          </div>
+          <div className="my-5 flex justify-center items-center">
+            <input
+              id="search-box"
+              onChange={filterBySearch}
+              placeholder="Search"
+              className="px-3 py-2 border border-black rounded lg font-hubballi text-lg"
+            />
           </div>
           <div className="flex flex-col justify-center items-center mt-2 text-black">
-            <p className="mb-5">Total Anak Tuhan: {guests.length}</p>
+            <p className="mb-5">Total Anak Tuhan: {filteredList.length}</p>
             <table className="font-hubballi text-xl w-1/2 text-center border border-black">
               <thead className="rounded-lg font-bold uppercase bg-gray-50">
                 <tr>
@@ -82,22 +111,18 @@ function Dashboard() {
                 </tr>
               </thead>
               <tbody className="text-xl font-bold">
-                {guests
-                  .map((item) => {
-                    return (
-                      <tr
-                        key={item.id}
-                        className="bg-white border border-black"
-                      >
-                        <th className="px-6 py-4  text-gray-900 whitespace-nowrap">
-                          {item.gereja}
-                        </th>
-                        <td className="px-6 py-4 border border-black">
-                          {item.name}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                {filteredList.map((item) => {
+                  return (
+                    <tr key={item.id} className="bg-white border border-black">
+                      <th className="px-6 py-4  text-gray-900 whitespace-nowrap">
+                        {item.gereja}
+                      </th>
+                      <td className="px-6 py-4 border border-black">
+                        {item.name}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
