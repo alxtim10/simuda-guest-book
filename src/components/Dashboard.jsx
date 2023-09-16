@@ -47,7 +47,7 @@ function Dashboard() {
     const query = event.target.value;
     var updatedList = [...guests];
     updatedList = updatedList.filter((item) => {
-      return item.name.toLowerCase().includes(query) || item.gereja.toLowerCase().includes(query);
+      return item.name.toUpperCase().includes(query.toUpperCase()) || item.gereja.toUpperCase().includes(query.toUpperCase());
     });
     setFilteredList(updatedList);
   };
